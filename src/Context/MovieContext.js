@@ -62,23 +62,23 @@ export const MovieState = ({ children }) => {
     setPopularMovies(popularMoviesData);
   };
 
-  useEffect(() => {
-    getPopularMovies();
-  }, []);
+  // useEffect(() => {
+  //   getPopularMovies();
+  // }, []);
 
-  useEffect(() => {
-    if (search.trim() === "") {
-      setShowPagination(true);
-    }
-    getMovies();
-  }, [search, currentPage]);
+  // useEffect(() => {
+  //   if (search.trim() === "") {
+  //     setShowPagination(true);
+  //   }
+  //   getMovies();
+  // }, [search, currentPage]);
 
-  useEffect(() => {
-    const loadingTimeout = setTimeout(() => {
-      setIsLoading(false);
-    }, 1300);
-    return () => clearTimeout(loadingTimeout);
-  }, [movies, currentPage]);
+  // useEffect(() => {
+  //   const loadingTimeout = setTimeout(() => {
+  //     setIsLoading(false);
+  //   }, 1300);
+  //   return () => clearTimeout(loadingTimeout);
+  // }, [movies, currentPage]);
 
   return (
     <MovieContext.Provider
