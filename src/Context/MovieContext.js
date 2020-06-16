@@ -3,26 +3,25 @@ import React, { useState, createContext, useEffect } from "react";
 export const MovieContext = createContext();
 
 export const MovieState = ({ children }) => {
-  // Toggle mobile menu
+
   const [hiddenMenu, setHiddenMenu] = useState(true);
-  // Active nav link
+
   const [activeLink, setActiveLink] = useState("Popular");
-  // Remove the buttons once you search for movies, and there are not more than 20
+
   const [showPagination, setShowPagination] = useState(true);
-  // Loader for images
+
   const [isLoading, setIsLoading] = useState(false);
-  // All the movies
+
   const [movies, setMovies] = useState([]);
-  // Search for the movies
+
   const [search, setSearch] = useState("");
-  // Get and set the current page
+ 
   const [currentPage, setCurrentPage] = useState(1);
-  // Get popular movies
+
   const [popularMovies, setPopularMovies] = useState([]);
-  // API_KEY
+
   const API_KEY = "9d4fbae6d45a1f406cc115a66a4de03d";
 
-  // Get movies
   const getMovies = async () => {
     const response = await fetch(
       `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=${currentPage}`
@@ -33,7 +32,6 @@ export const MovieState = ({ children }) => {
     }
   };
 
-  // Form submission for searching movies
   const handleSearch = async (e) => {
     e.preventDefault();
     if (search.trim() === "") {
@@ -47,7 +45,6 @@ export const MovieState = ({ children }) => {
     setShowPagination(false);
   };
 
-  // Pagination
   const newPage = (direction) => {
     if (direction === "next") {
       setCurrentPage(currentPage + 1);
@@ -56,8 +53,6 @@ export const MovieState = ({ children }) => {
       setCurrentPage(currentPage - 1);
     }
   };
-
-  // Get popular movies
 
   const getPopularMovies = async () => {
     const popularMoviesResponse = await fetch(
@@ -71,7 +66,6 @@ export const MovieState = ({ children }) => {
     getPopularMovies();
   }, []);
 
-  // Get all the movies when page loads
   useEffect(() => {
     if (search.trim() === "") {
       setShowPagination(true);
@@ -79,7 +73,6 @@ export const MovieState = ({ children }) => {
     getMovies();
   }, [search, currentPage]);
 
-  // Loading screen
   useEffect(() => {
     const loadingTimeout = setTimeout(() => {
       setIsLoading(false);

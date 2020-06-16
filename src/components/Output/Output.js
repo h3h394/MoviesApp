@@ -5,7 +5,7 @@ import { MovieContext } from "../../Context/MovieContext";
 import Container from "../GlobalComponents/Container";
 import Movies from "../Movies/Movies";
 import MoviesPagination from "../Movies/MoviesPagination";
-import PopularMovies from "../PopularMovies/PopularMovies";
+import Popular from "../Popular/Popular";
 
 const Output = () => {
   const { activeLink } = useContext(MovieContext);
@@ -22,7 +22,7 @@ const Output = () => {
       )}
       {activeLink === "Popular" && (
         <Container>
-          <PopularMovies />
+          <Popular />
         </Container>
       )}
     </div>
