@@ -1,14 +1,14 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
-import { useContext } from "react";
-import { MovieContext } from "../../../Context/MovieContext";
+// import { useContext } from "react";
+// import { MovieContext } from "../../../Context/MovieContext";
 import Container from "../../GlobalComponents/Container";
 import HeroNavLogo from "./HeroNavLogo";
 import HeroNavMenu from "./HeroNavMenu";
 import HeroNavSearch from "./HeroNavSearch";
 
 const HeroNav = () => {
-  const { hiddenMenu, setHiddenMenu } = useContext(MovieContext);
+  // const { hiddenMenu, setHiddenMenu } = useContext(MovieContext);
 
   return (
     <nav css={styles}>
@@ -18,11 +18,11 @@ const HeroNav = () => {
           <HeroNavMenu />
         </div>
         <HeroNavSearch />
-        <i
+        {/* <i
           onClick={() => setHiddenMenu(!hiddenMenu)}
           id="burgerMenu"
           className={hiddenMenu ? "fas fa-bars" : "fas fa-times"}
-        ></i>
+        ></i> */}
       </Container>
     </nav>
   );

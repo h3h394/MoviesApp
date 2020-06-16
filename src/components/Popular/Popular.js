@@ -1,23 +1,23 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
-import { useContext } from "react";
-import { MovieContext } from "../../Context/MovieContext";
+// import { useContext } from "react";
+// import { MovieContext } from "../../Context/MovieContext";
 import Container from "../GlobalComponents/Container";
 
 const PopularMovies = () => {
-  const { popularMovies } = useContext(MovieContext);
+  // const { popularMovies } = useContext(MovieContext);
 
   return (
     <div css={styles} className="popularMovies">
       <Container>
-        {popularMovies.results &&
+        {/* {popularMovies.results &&
           popularMovies.results.map((popularMovieItem, index) => (
             <img
               key={index}
               src={`https://image.tmdb.org/t/p/w400/${popularMovieItem.poster_path}`}
               alt="poster"
             />
-          ))}
+          ))} */}
       </Container>
     </div>
   );

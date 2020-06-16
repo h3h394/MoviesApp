@@ -1,18 +1,18 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
-import React, { useContext } from "react";
-import { MovieContext } from "../../Context/MovieContext";
+// import React, { useContext } from "react";
+// import { MovieContext } from "../../Context/MovieContext";
 import Container from "../GlobalComponents/Container";
 import Movies from "../Movies/Movies";
 import MoviesPagination from "../Movies/MoviesPagination";
 import Popular from "../Popular/Popular";
 
 const Output = () => {
-  const { activeLink } = useContext(MovieContext);
+  // const { activeLink } = useContext(MovieContext);
 
   return (
     <div css={styles} className="output">
-      {activeLink === "All Movies" && (
+      {/* {activeLink === "All Movies" && (
         <Container>
           <React.Fragment>
             <Movies />
@@ -24,7 +24,7 @@ const Output = () => {
         <Container>
           <Popular />
         </Container>
-      )}
+      )} */}
     </div>
   );
 };
