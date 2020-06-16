@@ -1,24 +1,23 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
-// import { useContext } from "react";
-// import { MovieContext } from "../../../Context/MovieContext";
+import { useContext } from "react";
+import { MovieContext } from "../../../Context/MovieContext";
 
 const HeroNavSearch = () => {
-  // const { search, setSearch, handleSearch, activeLink } = useContext(
-  //   MovieContext
-  // );
+  const { search, setSearch, handleSearch, activeLink } = useContext(
+    MovieContext
+  );
 
   return (
-    // onSubmit={handleSearch}
-    <form css={styles}>
-      {/* {activeLink !== "Popular" && (
+    <form css={styles} onSubmit={handleSearch}>
+      {activeLink !== "Popular" && (
         <input
           type="text"
           placeholder="Search for movies..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-      )} */}
+      )}
     </form>
   );
 };

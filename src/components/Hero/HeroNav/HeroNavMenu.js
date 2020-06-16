@@ -1,18 +1,17 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
-// import { useContext } from "react";
-// import { MovieContext } from "../../../Context/MovieContext";
+import { useContext } from "react";
+import { MovieContext } from "../../../Context/MovieContext";
 import HeroNavLink from "./HeroNavLink";
 
 const HeroNavMenu = () => {
-  // const { hiddenMenu } = useContext(MovieContext);
+  const { hiddenMenu } = useContext(MovieContext);
 
   return (
-    // <div css={styles} className={(hiddenMenu ? "hidden" : "") + " heroNavMenu"}>
-    //   <HeroNavLink btnText="Popular" />
-    //   <HeroNavLink btnText="All Movies" />
-    // </div>
-    <div>remove this</div>
+    <div css={styles} className={(hiddenMenu ? "hidden" : "") + " heroNavMenu"}>
+      <HeroNavLink btnText="Popular" />
+      <HeroNavLink btnText="All Movies" />
+    </div>
   );
 };
 

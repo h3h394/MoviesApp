@@ -1,17 +1,17 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
-// import { useContext } from "react";
-// import { MovieContext } from "../../Context/MovieContext";
+import { useContext } from "react";
+import { MovieContext } from "../../Context/MovieContext";
 import Container from "../GlobalComponents/Container";
 import Loader from "../GlobalComponents/Loader";
 
 const Movies = () => {
-  // const { movies, isLoading } = useContext(MovieContext);
+  const { movies, isLoading } = useContext(MovieContext);
 
   return (
     <div css={styles} className="movies">
       <Container>
-        {/* {movies.results && movies.results.length === 0 && (
+        {movies.results && movies.results.length === 0 && (
           <h1 className="error">Result not found</h1>
         )}
         {!isLoading ? (
@@ -25,7 +25,7 @@ const Movies = () => {
           ))
         ) : (
           <Loader />
-        )} */}
+        )}
       </Container>
     </div>
   );

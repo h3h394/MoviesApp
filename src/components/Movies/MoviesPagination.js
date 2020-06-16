@@ -1,15 +1,15 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
-// import React, { useContext } from "react";
-// import { MovieContext } from "../../Context/MovieContext";
+import React, { useContext } from "react";
+import { MovieContext } from "../../Context/MovieContext";
 import Container from "../GlobalComponents/Container";
 
 const MoviesPagination = () => {
-  // const { newPage, currentPage, showPagination } = useContext(MovieContext);
+  const { newPage, currentPage, showPagination } = useContext(MovieContext);
 
   return (
     <div css={styles} className="moviesPagination">
-      {/* {showPagination && (
+      {showPagination && (
         <Container>
           <React.Fragment>
             <button
@@ -24,7 +24,7 @@ const MoviesPagination = () => {
             <button onClick={() => newPage("next")}>Next Page</button>
           </React.Fragment>
         </Container>
-      )} */}
+      )}
     </div>
   );
 };
