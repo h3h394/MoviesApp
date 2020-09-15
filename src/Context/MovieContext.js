@@ -21,16 +21,6 @@ export const MovieState = ({ children }) => {
 
   const API_KEY = process.env.REACT_APP_NOT_API_KEY;
 
-  const getMovies = async () => {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=${currentPage}`
-    );
-    const data = await response.json();
-    if (search.trim() === '') {
-      setMovies(data);
-    }
-  };
-
   const handleSearch = async (e) => {
     e.preventDefault();
     if (search.trim() === '') {
@@ -53,31 +43,39 @@ export const MovieState = ({ children }) => {
     }
   };
 
-  const getPopularMovies = async () => {
-    const popularMoviesResponse = await fetch(
-      `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=3`
-    );
-    const popularMoviesData = await popularMoviesResponse.json();
-    setPopularMovies(popularMoviesData);
-  };
-
   useEffect(() => {
+    const getPopularMovies = async () => {
+      const popularMoviesResponse = await fetch(
+        `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=3`
+      );
+      const popularMoviesData = await popularMoviesResponse.json();
+      setPopularMovies(popularMoviesData);
+    };
     getPopularMovies();
-  }, []);
+  });
 
   useEffect(() => {
     if (search.trim() === '') {
       setShowPagination(true);
     }
+    const getMovies = async () => {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=${currentPage}`
+      );
+      const data = await response.json();
+      if (search.trim() === '') {
+        setMovies(data);
+      }
+    };
     getMovies();
-  }, [search, currentPage]);
+  }, [search, API_KEY, currentPage]);
 
   useEffect(() => {
     const loadingTimeout = setTimeout(() => {
       setIsLoading(false);
     }, 1300);
     return () => clearTimeout(loadingTimeout);
-  }, [movies, currentPage]);
+  }, [search, API_KEY, currentPage]);
 
   return (
     <MovieContext.Provider
