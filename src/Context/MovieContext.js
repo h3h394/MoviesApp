@@ -1,12 +1,11 @@
-import React, { useState, createContext, useEffect } from "react";
+import React, { useState, createContext, useEffect } from 'react';
 
 export const MovieContext = createContext();
 
 export const MovieState = ({ children }) => {
-
   const [hiddenMenu, setHiddenMenu] = useState(true);
 
-  const [activeLink, setActiveLink] = useState("Popular");
+  const [activeLink, setActiveLink] = useState('Popular');
 
   const [showPagination, setShowPagination] = useState(true);
 
@@ -14,27 +13,27 @@ export const MovieState = ({ children }) => {
 
   const [movies, setMovies] = useState([]);
 
-  const [search, setSearch] = useState("");
- 
+  const [search, setSearch] = useState('');
+
   const [currentPage, setCurrentPage] = useState(1);
 
   const [popularMovies, setPopularMovies] = useState([]);
 
-  const API_KEY = "9d4fbae6d45a1f406cc115a66a4de03d";
+  const API_KEY = process.env.REACT_APP_NOT_API_KEY;
 
   const getMovies = async () => {
     const response = await fetch(
       `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=${currentPage}`
     );
     const data = await response.json();
-    if (search.trim() === "") {
+    if (search.trim() === '') {
       setMovies(data);
     }
   };
 
   const handleSearch = async (e) => {
     e.preventDefault();
-    if (search.trim() === "") {
+    if (search.trim() === '') {
       return;
     }
     const searchResponse = await fetch(
@@ -46,10 +45,10 @@ export const MovieState = ({ children }) => {
   };
 
   const newPage = (direction) => {
-    if (direction === "next") {
+    if (direction === 'next') {
       setCurrentPage(currentPage + 1);
       setIsLoading(true);
-    } else if (direction === "previous" && currentPage !== 1) {
+    } else if (direction === 'previous' && currentPage !== 1) {
       setCurrentPage(currentPage - 1);
     }
   };
@@ -67,7 +66,7 @@ export const MovieState = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    if (search.trim() === "") {
+    if (search.trim() === '') {
       setShowPagination(true);
     }
     getMovies();
